@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     proximity:100,
     minRadiusPct:1, 
     maxRadiusPct:2.2,
-    density:2500,
+    density:1500,
     parallax:false,
   });
   //var intro = document.getElementById('intro');
