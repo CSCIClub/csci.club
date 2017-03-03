@@ -17,17 +17,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Informational root routes
-app.route('/')
-  .get(function(req, res) {
-    res.json({
-      'emails_url': 'http://api.csci.club'
-    });
+app.get('/api', function(req, res) {
+  res.json({
+    'emails_url': 'http://csci.club/api'
   });
+});
 
 // Email routes
-app.get('/emails', email.listAll);
-app.get('/email/register/:email', email.register);
-app.get("/email/unregister:email", email.unregister);
+app.get('/api/emails', email.listAll);
+app.get('/api/email/subscribe/:email', email.subscribe);
+app.get("/api/email/unsubscribe/:email", email.unsubscribe);
 
 
 (function() {

@@ -4,16 +4,16 @@ var model = require('./models');
 
 module.exports = {
   // types
-  SUCCESS: type.SUCCESS,
+  SUBSCRIBED: type.SUBSCRIBED,
+  UNSUBSCRIBED: type.UNSUBSCRIBED,
   INVALID_EMAIL: type.INVALID_EMAIL,
-  ALREADY_REGISTERED: type.ALREADY_REGISTERED,
   INTERNAL_ERROR: type.INTERNAL_ERROR,
 
   // email model
   Email: model.Email,
 
   // functions
-  register: rest.register,
-  unregister: rest.unregister,
+  subscribe: rest.subscribe,
+  unsubscribe: rest.unsubscribe,
   listAll: rest.listAll
 };

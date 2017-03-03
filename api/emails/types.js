@@ -1,4 +1,4 @@
-module.exports.REGISTERED = 'REGISTERED';
-module.exports.UNREGISTERED = 'UNREGISTERED';
+module.exports.SUBSCRIBED = 'SUBSCRIBED';
+module.exports.UNSUBSCRIBED = 'UNSUBSCRIBED';
 module.exports.INVALID_EMAIL = 'INVALID_EMAIL';
 module.exports.INTERNAL_ERROR = 'INTERNAL_ERROR';
