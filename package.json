@@ -7,7 +7,7 @@
     "build": "npm run lint && rm -rf server_dist && babel server -d server_dist && webpack",
     "debug": "NODE_ENV=debug && cd server && nodemon index.js --exec babel-node",
     "dev": "npm debug",
-    "lint": "eslint server client",
+    "lint": "eslint --ignore-path .eslintignore server client",
     "postinstall": "npm run build",
     "start": "NODE_ENV=production && cd server_dist && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,6 +27,7 @@
     "npm": "4.4.1"
   },
   "dependencies": {
+    "Particleground.js": "^1.1.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "style-loader": "^0.13.2",

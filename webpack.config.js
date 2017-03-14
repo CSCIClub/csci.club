@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 const DefinePlugin = webpack.DefinePlugin;
 const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
-const NoErrorsPlugin = webpack.NoErrorsPlugin;
+const NoEmitOnErrorsPlugin = webpack.NoEmitOnErrorsPlugin;
 const OccurrenceOrderPlugin = webpack.optimize.OccurrenceOrderPlugin;
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
@@ -29,8 +29,14 @@ const common = {
   module: {
     loaders: [
       {
+        enforce: 'pre',
         test: /\.js$/,
-        loaders: ['babel-loader', 'eslint-loader'],
+        exclude: [/node_modules/, /vendor/],
+        loader: 'eslint-loader',
+      },
+      {
+        test: /\.js$/,
+        loaders: 'babel-loader',
         exclude: /node_modules/,
       },
       {
@@ -75,10 +81,19 @@ const specific = {
     },
     plugins: [
       new CleanPlugin(paths.dist),
-      new CommonsChunkPlugin({ names: ['vendor', 'manifest'] }),
-      new DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
+      new CommonsChunkPlugin({
+        names: ['vendor', 'manifest'],
+      }),
+      new DefinePlugin({
+        'process.env.NODE_ENV': '"production"',
+      }),
       new ExtractTextPlugin('[name].[chunkhash].css'),
-      new UglifyJsPlugin({ minimize: true, compress: { warnings: false } }),
+      new UglifyJsPlugin({
+        minimize: true,
+        compress: {
+          warnings: false,
+        },
+      }),
     ],
   },
   debug: {
@@ -100,10 +115,12 @@ const specific = {
       ],
     },
     plugins: [
-      new DefinePlugin({ 'process.env.NODE_ENV': '"debug"' }),
+      new DefinePlugin({
+        'process.env.NODE_ENV': '"debug"',
+      }),
       new OccurrenceOrderPlugin(),
       new HotModuleReplacementPlugin(),
-      new NoErrorsPlugin(),
+      new NoEmitOnErrorsPlugin(),
     ],
   },
 };
