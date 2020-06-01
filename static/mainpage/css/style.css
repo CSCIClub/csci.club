@@ -40,7 +40,7 @@ img.center-20 {
 
 #particles {
   height:100%;
-  width:80%;
+  width:100%;
 }
 body {
     overflow-x: hidden;
@@ -412,8 +412,7 @@ section h3.section-subheading {
     -webkit-transition: all ease .5s;
     -moz-transition: all ease .5s;
     transition: all ease .5s;
-    background: rgba(254,209,54,.9); /* Fallback when no plugin support */
-    background: rgba(3388d6, .9);
+    background: rgba(51, 136, 214, 0.9);
 }
 
 #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
